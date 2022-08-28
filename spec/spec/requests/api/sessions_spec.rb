@@ -29,9 +29,9 @@ RSpec.describe "Api::Sessions", type: :request do
              as: :json
 
         expect(response).to have_http_status(:success)
+        expect(response.body).to include('token')
       end
     end
 
   end
-
 end
