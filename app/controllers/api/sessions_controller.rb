@@ -3,10 +3,9 @@ class Api::SessionsController < Devise::SessionsController
 
   def create
     user = User.find_by(email: params[:user][:email])
-    if user.valid_password? params[:user][:password]
-      render json: { token: JsonWebToken.encode(sub: user.id) }
-    else
-      render json: { errors: ["Invalid email or password"] }
+    unless user
+      return render json: { error: 'Não identificamos o seu cadastro, por favor cadastre-se.' }, status: :unprocessable_entity
     end
+    render json: { token: JsonWebToken.encode(sub: user.id) }
   end
 end

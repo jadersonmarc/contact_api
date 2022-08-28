@@ -8,7 +8,7 @@ RSpec.describe "Api::Registrations", type: :request do
   describe "POST api/registrations/create" do
     context 'when create authentication' do
       before do
-        post  "/api/registrations", params: {user: {email: Faker::Internet.email, password: user.password, name: Faker::Name.name}}
+        post  create_registrations_url , params: {user: {email: Faker::Internet.email, password: user.password, name: Faker::Name.name}}
       end
       it "create registration user" do
         expect(response).to have_http_status(200)
@@ -17,7 +17,7 @@ RSpec.describe "Api::Registrations", type: :request do
 
     context 'when invalid params' do
       before do
-        post  "/api/registrations", params: {user: {email:"", password: "", name: Faker::Name.name}}
+        post  create_registrations_url , params: {user: {email:"", password: "", name: Faker::Name.name}}
       end
       it "create registration user" do
         expect(response).to have_http_status(422)
