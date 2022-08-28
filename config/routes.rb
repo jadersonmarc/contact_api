@@ -11,12 +11,12 @@ Rails.application.routes.draw do
   namespace :api do
     resources :sessions, only: [:new]
     resources :registrations, only: [:create]
-    namespace :articles, path: "/" do
-      resources :articles
+    namespace :contacts, path: "/" do
+      resources :contacts
     end
   end
 
-  root to: "api/articles/articles#index"
+  root to: "api/contacts/contacts#index"
 
   get 'health', to: 'health#index'
 
