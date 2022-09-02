@@ -112,6 +112,10 @@ GEM
     factory_bot_rails (6.2.0)
       factory_bot (~> 6.2.0)
       railties (>= 5.0.0)
+    faraday (2.5.2)
+      faraday-net_http (>= 2.0, < 3.1)
+      ruby2_keywords (>= 0.0.4)
+    faraday-net_http (3.0.0)
     ffi (1.15.5)
     ffi-compiler (1.0.1)
       ffi (>= 1.0.0)
@@ -247,6 +251,7 @@ GEM
       rspec-mocks (~> 3.10)
       rspec-support (~> 3.10)
     rspec-support (3.11.0)
+    ruby2_keywords (0.0.5)
     rubyzip (2.3.2)
     selenium-webdriver (4.2.0)
       childprocess (>= 0.5, < 5.0)
@@ -308,6 +313,7 @@ DEPENDENCIES
   devise-encryptable
   factory_bot_rails
   faker!
+  faraday (~> 2.5, >= 2.5.2)
   http (~> 4.2)
   importmap-rails
   jbuilder
