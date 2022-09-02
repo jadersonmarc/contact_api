@@ -12,7 +12,11 @@ Rails.application.routes.draw do
     resources :sessions, only: [:new]
     resources :registrations, only: [:create]
     namespace :contacts, path: "/" do
-      resources :contacts
+      resources :contacts do
+      end
+    end
+    namespace :addresses, path: "/" do
+      resources :addresses
     end
   end
 
