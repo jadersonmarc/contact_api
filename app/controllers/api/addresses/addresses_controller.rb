@@ -1,7 +1,10 @@
 class Api::Addresses::AddressesController < ApplicationController
 
   def index
-    render json: Address.all
+
+    client = PostCode::GetAddressByPostCodeService
+               .new({ cep: '25220680' }).call
+    render json: client
   end
 
   def show
@@ -9,6 +12,7 @@ class Api::Addresses::AddressesController < ApplicationController
   end
 
   def create
+
     @addresses = Address.new(addresses_params)
 
     if @addresses.save
@@ -19,6 +23,7 @@ class Api::Addresses::AddressesController < ApplicationController
   end
 
   private
+
   def addresses_params
     params.require(:addresses).permit(:street, :district, :number, :city, :state, :contact_id)
   end
