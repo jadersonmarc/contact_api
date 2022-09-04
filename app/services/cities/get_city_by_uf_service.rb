@@ -1,18 +1,21 @@
 module Services
-    class Cities::GetStateByUfService
+    class Cities::GetStateByUfService < Services::BaseService
       attr_accessor :state
 
       def initialize(params)
-        @request = Services::BaseService.new
+        super()
         @state = params
       end
 
       def call
-
-        JSON.parse @request.get_request(request_url).to_s
+        JSON.parse get_request(request_url).to_s
       end
 
       private
+
+      def get_request(url, params: {})
+        super(url)
+      end
 
       def request_url
         base_url << state[:state]
