@@ -1,7 +1,7 @@
 class Api::Contacts::ContactsController < ApiController
 
   def index
-    render json: Contact.all
+    render json: Contact.contact_with_address
   end
 
   def show
@@ -33,4 +33,3 @@ class Api::Contacts::ContactsController < ApiController
     params.require(:contact).permit(:name, :cpf, :email, :birth_date)
   end
 end
-
