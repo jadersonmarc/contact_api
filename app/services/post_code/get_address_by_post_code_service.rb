@@ -1,20 +1,24 @@
 module Services
-    class PostCode::GetAddressByPostCodeService
+    class PostCode::GetAddressByPostCodeService < Services::BaseService
       attr_accessor :post_code
 
       def initialize(params)
-        @request = Services::BaseService.new
+        super()
         @post_code = params
       end
 
       def call
-        url = base_url << post_code[:cep]
-        JSON.parse @request.get_request(url).to_s
+        JSON.parse get_request(request_url).to_s
       end
 
       private
 
-      def get_post_code(params)
+      def get_request(url, params: {})
+        super(url)
+      end
+
+      def request_url
+         base_url << post_code[:cep]
       end
 
       def base_url

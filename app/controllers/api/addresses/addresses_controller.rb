@@ -3,7 +3,7 @@ class Api::Addresses::AddressesController < ApplicationController
   def index
 
     client = PostCode::GetAddressByPostCodeService
-               .new({ cep: '25220680' }).call
+               .new({ cep: '25223470' }).call
     render json: client
   end
 

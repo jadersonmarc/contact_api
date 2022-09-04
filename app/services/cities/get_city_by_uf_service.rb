@@ -1,5 +1,5 @@
 module Services
-    class PostCode::GetStateByUfService
+    class Cities::GetStateByUfService
       attr_accessor :state
 
       def initialize(params)
@@ -8,14 +8,14 @@ module Services
       end
 
       def call
-        # url = base_url << state[:state] << state[:city]
-        # to do
-        JSON.parse @request.get_request(url).to_s
+
+        JSON.parse @request.get_request(request_url).to_s
       end
 
       private
 
-      def get_post_code(params)
+      def request_url
+        base_url << state[:state]
       end
 
       def base_url
