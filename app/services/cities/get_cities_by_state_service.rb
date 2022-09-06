@@ -1,5 +1,5 @@
 module Services
-    class Cities::GetStateByUfService < Services::BaseService
+    class Cities::GetCitiesByStateService < Services::BaseService
       attr_accessor :state
 
       def initialize(params)

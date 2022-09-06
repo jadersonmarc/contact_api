@@ -18,7 +18,7 @@ module Services
       end
 
       def request_url
-         base_url << post_code[:cep]
+         base_url << post_code[:post_code]
       end
 
       def base_url

@@ -6,6 +6,7 @@ class AddressSerializer
              :number,
              :district,
              :city,
-             :state
+             :state,
+             :post_code
 
 end

@@ -8,7 +8,7 @@ class Client
 
   def request(method, url, data: nil, params: {})
     params = method == :get ? { params: params } : { json: data, params: params }
-    http.request(method,  url, params)
+     http.request(method,  url, params)
 
   rescue HTTP::Error => e
     Rails.logger.error(e)

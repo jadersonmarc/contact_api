@@ -16,7 +16,13 @@ Rails.application.routes.draw do
       end
     end
     namespace :addresses, path: "/" do
-      resources :addresses
+      resources :addresses do
+        collection do
+          get :state
+          get :city
+          get :post_code
+        end
+      end
     end
   end
 
