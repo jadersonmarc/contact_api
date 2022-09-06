@@ -1,10 +1,10 @@
 module Services
     class Cities::GetCitiesByStateService < Services::BaseService
-      attr_accessor :state
+      attr_accessor :city
 
       def initialize(params)
         super()
-        @state = params
+        @city = params
       end
 
       def call
@@ -18,7 +18,8 @@ module Services
       end
 
       def request_url
-        base_url << state[:state]
+        path = city.present? ? city[:city] : ''
+        base_url << path.to_s
       end
 
       def base_url

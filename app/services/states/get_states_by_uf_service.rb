@@ -1,9 +1,9 @@
 module Services
     class States::GetStatesByUfService < Services::BaseService
       attr_accessor :state
-
-      def initialize
+      def initialize(params)
         super()
+        @state = params
       end
 
       def call
@@ -17,7 +17,8 @@ module Services
       end
 
       def request_rul
-         base_url
+        path = state.present? ? state[:state] : ''
+         base_url << path
       end
 
       def base_url

@@ -6,16 +6,16 @@ class Api::Addresses::AddressesController < ApplicationController
       render json: AddressSerializer.new(address)
     end
   end
-  def state(state_params)
-    @state = States::GetStatesByUfService.new(state).call
+  def state
+    render json: @state = States::GetStatesByUfService.new(params[:state]).call
   end
-  def city(city_params)
-    @city = Cities::GetCitiesByStateService.new(city).call
+  def city
+    # render json: params[:city]
+     render json: @city = Cities::GetCitiesByStateService.new({city: params[:city]}).call
   end
 
   def post_code
     render json: @address_post_code = PostCode::GetAddressByPostCodeService.new({post_code: params[:post_code]}).call
-
   end
   def create
     @addresses = Address.new(addresses_params)
