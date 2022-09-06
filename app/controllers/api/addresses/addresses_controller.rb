@@ -1,24 +1,19 @@
 class Api::Addresses::AddressesController < ApplicationController
-
+  attr_accessor :address
   def index
-
-    client = PostCode::GetAddressByPostCodeService
-               .new({ cep: '25223470' }).call
-    render json: client
-  end
-
-  def show
-    # to do
+    def index
+      @contact = Contact.all
+      render json: ContactSerializer.new(contact)
+    end
   end
 
   def create
-
     @addresses = Address.new(addresses_params)
 
     if @addresses.save
-      render json: @addresses, status: 201
+      [ addresses, status: 201]
     else
-      render json: { errors: user.errors }, status: 422
+      [{ errors: user.errors }, status: 422]
     end
   end
 

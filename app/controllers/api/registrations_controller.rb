@@ -4,10 +4,10 @@ class Api::RegistrationsController < Devise::RegistrationsController
     user = User.new(user_params)
     if validate_password(user)
       user.save!
-      { token: JsonWebToken.encode(sub: user.id) }
+      render json:  { token: JsonWebToken.encode(sub: user.id) }
     else
       warden.custom_failure!
-      return { errors: user.errors.full_messages }, status: :unprocessable_entity
+      render json: { errors: user.errors.full_messages }, status: :unprocessable_entity
     end
   end
   private
