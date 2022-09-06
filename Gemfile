@@ -89,6 +89,5 @@ gem 'devise-encryptable'
 gem 'pundit'
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
 gem 'rack-cors', '>= 1.1.0'
-gem 'faraday', '~> 2.5', '>= 2.5.2'
 
 gem 'http', '~> 4.2'

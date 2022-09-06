@@ -2,13 +2,12 @@ class Api::RegistrationsController < Devise::RegistrationsController
   skip_before_action :verify_authenticity_token
   def create
     user = User.new(user_params)
-
     if validate_password(user)
       user.save!
-      render json: { token: JsonWebToken.encode(sub: user.id) }
+      { token: JsonWebToken.encode(sub: user.id) }
     else
       warden.custom_failure!
-      render json: { errors: user.errors.full_messages }, status: :unprocessable_entity
+      return { errors: user.errors.full_messages }, status: :unprocessable_entity
     end
   end
   private
