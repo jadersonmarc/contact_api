@@ -9,7 +9,7 @@ class Api::Contacts::ContactsController < ApiController
     @contact = Contact.new(contact_params)
 
     if @contact.save
-      render json: @contact, status: 201
+      render json: contact, status: 201
     else
       render json: { errors: user.errors }, status: 422
     end

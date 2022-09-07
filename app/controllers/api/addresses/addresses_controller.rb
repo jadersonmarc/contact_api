@@ -1,4 +1,4 @@
-class Api::Addresses::AddressesController < ApplicationController
+class Api::Addresses::AddressesController < ApiController
   attr_accessor :address, :address_post_code, :city, :state
   def index
     def index
@@ -10,7 +10,6 @@ class Api::Addresses::AddressesController < ApplicationController
     render json: @state = States::GetStatesByUfService.new(params[:state]).call
   end
   def city
-    # render json: params[:city]
      render json: @city = Cities::GetCitiesByStateService.new({city: params[:city]}).call
   end
 
@@ -18,12 +17,12 @@ class Api::Addresses::AddressesController < ApplicationController
     render json: @address_post_code = PostCode::GetAddressByPostCodeService.new({post_code: params[:post_code]}).call
   end
   def create
-    @addresses = Address.new(addresses_params)
+    @address = Address.new(addresses_params)
 
-    if @addresses.save
-      render json:  addresses, status: 201
+    if address.save
+      render json:  address, status: 201
     else
-      render json: { errors: user.errors }, status: :unprocessable_entity
+      render json: { errors: address.errors }, status: :unprocessable_entity
     end
   end
 
