@@ -1,24 +1,17 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Instale o [Docker](https://docs.docker.com/install/linux/docker-ce/ubuntu/) e o [Docker Compose](https://docs.docker.com/compose/install/) e siga os seguintes passos:
 
-Things you may want to cover:
+* Clone este repositório.
 
-* Ruby version
+* Cire o container com o Docker compose: ``docker-compose build``
 
-* System dependencies
+* inicie o container com o Docker compose: ``docker-compose up``
 
-* Configuration
+* entre no container docker: ``docker exec -it contact_api``
 
-* Database creation
+* Instale as dependências do projeto via Bundler: ``bundle install``
 
-* Database initialization
+* Rode as migrations: ``rails db:migrations``
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* Rode as migrations: ``rails db:seeds``
